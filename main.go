@@ -1,16 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/camiloaromero23/cat-scraper-api/handlers"
 	"github.com/camiloaromero23/cat-scraper-api/middlewares"
+	"github.com/camiloaromero23/cat-scraper-api/utils"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
 func main() {
+  host := utils.GoDotEnvVariable("HOST")
+  port := utils.GoDotEnvVariable("PORT")
+
 	app := fiber.New()
 
 	app.Use(cors.New(cors.Config{
@@ -27,5 +32,7 @@ func main() {
 	api.Get("/cats/:id", handlers.GetCatHandler)
 	api.Put("/cats", handlers.UpdateCatsHandler)
 
-	log.Fatal(app.Listen(":3000"))
+  server := fmt.Sprintf("%s:%s", host, port)
+
+	log.Fatal(app.Listen(server))
 }

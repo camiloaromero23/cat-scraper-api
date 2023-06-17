@@ -8,6 +8,8 @@ require (
 	gorm.io/gorm v1.25.2-0.20230530020048-26663ab9bf55
 )
 
+require github.com/joho/godotenv v1.5.1 // indirect
+
 require (
 	github.com/PuerkitoBio/goquery v1.8.1 // indirect
 	github.com/andybalholm/brotli v1.0.5 // indirect

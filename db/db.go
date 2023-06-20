@@ -1,8 +1,6 @@
 package db
 
 import (
-	"log"
-
 	"github.com/camiloaromero23/cat-scraper-api/utils"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
@@ -30,20 +28,4 @@ func GetDB() *gorm.DB {
 	}
 
 	return db
-}
-
-func CloseDB() {
-	if db == nil {
-		return
-	}
-
-	dbInstance, err := db.DB()
-
-	if err != nil {
-		log.Println("Error getting db", err)
-	}
-
-	dbInstance.Close()
-
-	db = nil
 }

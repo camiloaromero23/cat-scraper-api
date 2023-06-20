@@ -13,7 +13,6 @@ import (
 )
 
 func GetCat(id string) (*types.Cat, error) {
-	defer db.CloseDB()
 	db := db.GetDB()
 
 	var cat types.Cat
@@ -30,7 +29,6 @@ func GetCat(id string) (*types.Cat, error) {
 }
 
 func GetCats() ([]types.Cat, error) {
-	defer db.CloseDB()
 	db := db.GetDB()
 
 	var cats []types.Cat
@@ -44,7 +42,6 @@ func GetCats() ([]types.Cat, error) {
 }
 
 func UpdateCats() ([]types.Cat, error) {
-	defer db.CloseDB()
 	sync := flag.Bool("sync", false, "Run synchronously")
 	flag.Parse()
 

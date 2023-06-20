@@ -21,7 +21,7 @@ func AuthMiddleware(c *fiber.Ctx) error {
 	apiKey := c.Get("Authorization")
 
 	var dbApiKey types.API_KEY
-	res := db.First(&dbApiKey, "key = ?", apiKey)
+	res := db.First(&dbApiKey, "api_key = ?", apiKey)
 
 	if res.Error != nil {
 		if errors.Is(res.Error, gorm.ErrRecordNotFound) {
